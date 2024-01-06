@@ -14,14 +14,18 @@ namespace Employees
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-
+            
             Ioc.Default.ConfigureServices(
                 new ServiceCollection()
+                .AddSingleton(typeof(MainWindow))
                 .AddTransient(typeof(MainViewModel))
                 .AddTransient(typeof(ICsvParserService), typeof(CsvParserService))
                 .AddTransient(typeof(ICalculatePairsService), typeof(CalculatePairsService))
                 .BuildServiceProvider()
                 );
+
+            MainWindow = Ioc.Default.GetRequiredService<MainWindow>();
+            MainWindow.Show();
         }
     }
 }

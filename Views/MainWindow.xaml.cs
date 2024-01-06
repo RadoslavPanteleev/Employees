@@ -10,16 +10,13 @@ namespace Employees
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly MainViewModel? viewModel;
+        private readonly MainViewModel viewModel;
 
-        public MainWindow()
+        public MainWindow(MainViewModel mainViewModel)
         {
             InitializeComponent();
 
-            this.viewModel = Ioc.Default.GetService<MainViewModel>();
-            if(viewModel != null)
-                this.viewModel.NotificationRequest += ViewModel_NotificationRequest;
-
+            viewModel = mainViewModel;
             DataContext = viewModel;
         }
 
