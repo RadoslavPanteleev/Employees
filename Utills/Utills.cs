@@ -13,7 +13,7 @@
             DateTime overlapStart = firstStart < secondStart ? secondStart : firstStart;
             DateTime overlapEnd = firstEnd < secondEnd ? firstEnd : secondEnd;
 
-            return (int)(overlapEnd.Date - overlapStart.Date).TotalDays + 1;
+            return (int)(overlapEnd.Date - overlapStart.Date).TotalDays + 1; // +1, защото overlapEnd започва от 00:00 часа, а не от 23:59
         }
     }
 }
